@@ -9,3 +9,18 @@ def save(activity):
     results = run_sql( sql, values )
     activity.id = results[0]['id']
     return activity
+
+def update(activity):
+    sql = "UPDATE activities SET (name, instructor, time, studio, level) = ( %s, %s, %s, %s ) WHERE id = %s"
+    values = [activity.name, activity.instructor, activity.time, activity.studio, activity.level, activity.id]
+    run_sql(sql, values)
+
+def select_all():
+    activities = []
+
+    sql = "SELECT * FROM activities"
+    results = run_sql(sql)
+    for row in results:
+        activity = Activity(row['name'], row['instructor'], row['time'], row['studio'], row['level'], row['id'])
+        activities.append(activity)
+    return activities

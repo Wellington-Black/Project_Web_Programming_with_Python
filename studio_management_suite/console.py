@@ -40,4 +40,7 @@ attendance_repository.save(attendance3)
 attendance_repository.save(attendance4)
 
 
+member_repository.update(member1)
+
+
 pdb.set_trace()

@@ -12,3 +12,21 @@ def save(attendance):
     results = run_sql( sql, values )
     attendance.id = results[0]['id']
     return attendance
+
+def update(attendance):
+    sql = "UPDATE attendances SET ( member_id, activity_id ) = ( %s, %s ) WHERE id = %s"
+    values = [attendance.member.id, attendance.activity.id, attendance.id]
+    run_sql(sql, values)
+
+def select_all():
+    attendances = []
+
+    sql = "SELECT * FROM attendances"
+    results = run_sql(sql)
+
+    for row in results:
+        member = member_repository.select(row['member_id'])
+        activity = activity_repository.select(row['activity_id'])
+        attendance = Attendance(member, activity, row['id'])
+        attendances.append(attendance)
+    return attendances

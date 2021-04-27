@@ -9,3 +9,18 @@ def save(member):
     results = run_sql(sql, values)
     member.id = results[0]['id']
     return member
+
+def update(member):
+    sql = "UPDATE members SET (first_name, last_name, email, phone) = ( %s, %s, %s, %s ) WHERE id = %s"
+    values = [member.first_name, member.last_name, member.email, member.phone, member.id]
+    run_sql(sql, values)
+
+def select_all():
+    members = []
+
+    sql = "SELECT * FROM members"
+    results = run_sql(sql)
+    for row in results:
+        member = Member(row['first_name'], row['last_name'], row['email'], row['phone'], row['id'])
+        members.append(member)
+    return members
