@@ -1,0 +1,17 @@
+{% extends '/layout.html' %}
+
+{% block title %} Activity {% endblock %}
+
+{% block main %}
+
+<div>
+    <p>{{ activity.name }}</p>
+    <hr>
+    <p>{{ activity.instructor }}</p>
+    <p>{{ activity.time }}</p>
+    <p>{{ activity.studio }}</p>
+    <p>{{ activity.level }}</p>
+    <p><a href="/activities/{{activity.id }}/edit">Edit</a></p>
+</div>
+
+{% endblock %}

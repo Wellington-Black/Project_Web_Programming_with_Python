@@ -11,7 +11,7 @@ def save(activity):
     return activity
 
 def update(activity):
-    sql = "UPDATE activities SET (name, instructor, time, studio, level) = ( %s, %s, %s, %s ) WHERE id = %s"
+    sql = "UPDATE activities SET (name, instructor, time, studio, level) = ( %s, %s, %s, %s, %s ) WHERE id = %s"
     values = [activity.name, activity.instructor, activity.time, activity.studio, activity.level, activity.id]
     run_sql(sql, values)
 
@@ -24,3 +24,13 @@ def select_all():
         activity = Activity(row['name'], row['instructor'], row['time'], row['studio'], row['level'], row['id'])
         activities.append(activity)
     return activities
+
+def select(id):
+    activity = None
+    sql = "SELECT * FROM activities WHERE id = %s"
+    values = [id]
+    result = run_sql(sql, values)[0]
+
+    if result is not None:
+        activity = Activity(result['name'], result['instructor'], result['time'], result['studio'], result['level'], result['id'] )
+    return activity

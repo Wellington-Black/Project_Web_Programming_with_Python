@@ -34,4 +34,3 @@ def select(id):
     if result is not None:
         member = Member(result['first_name'], result['last_name'], result['email'], result['phone'], result['id'] )
     return member
-

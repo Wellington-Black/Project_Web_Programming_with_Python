@@ -30,3 +30,31 @@ def create_activity():
     activity = Activity(name, instructor, time, studio, level)
     activity_repository.save(activity)
     return redirect('/activities')
+##############
+# SHOW
+# GET '/activities/<id>'
+@activities_blueprint.route("/activities/<id>", methods = ['GET'])
+def show_activity(id):
+    activity = activity_repository.select(id)
+    return render_template('activities/show.html', activity = activity)
+
+# EDIT
+# GET '/activities/<id>/edit'
+@activities_blueprint.route("/activities/<id>/edit", methods=['GET'])
+def edit_activity(id):
+    activity = activity_repository.select(id)
+    activities = activity_repository.select_all()
+    return render_template('activities/edit.html', activity = activity, all_activities = activities)
+
+# UPDATE
+# PUT '/activities/<id>'
+@activities_blueprint.route('/activities/<id>', methods=['POST'])
+def update_activity(id):
+    name = request.form['name']
+    instructor = request.form['instructor']
+    time = request.form['time']
+    studio = request.form['studio']
+    level = request.form['level']
+    activity = Activity(name, instructor, time, studio, level, id)
+    activity_repository.update(activity)
+    return redirect('/activities')
