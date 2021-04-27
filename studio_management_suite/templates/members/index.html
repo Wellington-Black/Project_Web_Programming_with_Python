@@ -6,7 +6,6 @@
 
 <h1>Members</h1>
 
-<p> This is just a test </p>
 <table>
   <tr>
     <th>First Name</th>
@@ -21,13 +20,13 @@
   {% for member in members %}
   <tr>
     
-    <td><a href="/users/{{ member.id }}"> {{member.first_name}} </a></td>
+    <td><a href="/members/{{ member.id }}"> {{member.first_name}} </a></td>
     <th>|</th>
-    <td><a href="/users/{{ member.id }}"> {{member.last_name}} </a></td>
+    <td><a href="/members/{{ member.id }}"> {{member.last_name}} </a></td>
     <th>|</th>
-    <td><a href="/users/{{ member.id }}"> {{member.email}} </a></td>
+    <td><a href="/members/{{ member.id }}"> {{member.email}} </a></td>
     <th>|</th>
-    <td><a href="/users/{{ member.id }}"> {{member.phone}} </a></td>
+    <td><a href="/members/{{ member.id }}"> {{member.phone}} </a></td>
   </tr>
   {% endfor %}
 </table>

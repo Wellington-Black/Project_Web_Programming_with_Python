@@ -1,0 +1,36 @@
+{% extends '/layout.html' %}
+
+{% block title %} Members {% endblock %}
+
+{% block main %}
+
+<h1>Members</h1>
+
+<table>
+  <tr>
+    <th>First Name</th>
+    <th>|</th>
+    <th>Last Instructor</th>
+    <th>|</th>
+    <th>Time</th>
+    <th>|</th>
+    <th>Level</th>
+  
+  </tr>
+  {% for activity in activities %}
+  <tr>
+    
+    <td><a href="/activities/{{ activity.id }}"> {{activity.name}} </a></td>
+    <th>|</th>
+    <td><a href="/activities/{{ activity.id }}"> {{activity.instructor}} </a></td>
+    <th>|</th>
+    <td><a href="/activities/{{ activity.id }}"> {{activity.time}} </a></td>
+    <th>|</th>
+    <td><a href="/activities/{{ activity.id }}"> {{activity.studio}} </a></td>
+    <th>|</th>
+    <td><a href="/activities/{{ activity.id }}"> {{activity.level}} </a></td>
+    
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}
