@@ -36,3 +36,23 @@ def create_member():
 def show_member(id):
     member = member_repository.select(id)
     return render_template('members/show.html', member = member)
+
+# EDIT
+# GET '/members/<id>/edit'
+@members_blueprint.route("/members/<id>/edit", methods=['GET'])
+def edit_member(id):
+    member = member_repository.select(id)
+    members = member_repository.select_all()
+    return render_template('members/edit.html', member = member, all_members = members)
+
+# UPDATE
+# PUT '/tasks/<id>'
+@members_blueprint.route('/members/<id>', methods=['POST'])
+def update_member(id):
+    first_name = request.form['first_name']
+    last_name = request.form['last_name']
+    email = request.form['email']
+    phone = request.form['phone']
+    member = Member(first_name, last_name, email, phone, id)
+    member_repository.update(member)
+    return redirect('/members')
