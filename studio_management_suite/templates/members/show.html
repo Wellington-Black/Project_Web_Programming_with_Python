@@ -1,0 +1,16 @@
+{% extends '/layout.html' %}
+
+{% block title %} Member {% endblock %}
+
+{% block main %}
+
+<div>
+    <p>{{ member.first_name }}</p>
+    <hr>
+    <p>{{ member.last_name }}</p>
+    <p>{{ member.email }}</p>
+    <p>{{ member.phone }}</p>
+    <p><a href="/members/{{member.id }}/edit">Edit</a></p>
+</div>
+
+{% endblock %}

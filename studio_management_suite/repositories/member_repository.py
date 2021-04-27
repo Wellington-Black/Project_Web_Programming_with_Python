@@ -24,3 +24,13 @@ def select_all():
         member = Member(row['first_name'], row['last_name'], row['email'], row['phone'], row['id'])
         members.append(member)
     return members
+
+def select(id):
+    member = None
+    sql = "SELECT * FROM members WHERE id = %s"
+    values = [id]
+    result = run_sql(sql, values)[0]
+
+    if result is not None:
+        member = Member(result['first_name'], result['last_name'], result['email'], result['phone'], result['id'] )
+    return member

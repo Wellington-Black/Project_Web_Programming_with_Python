@@ -29,3 +29,10 @@ def create_member():
     member = Member(first_name, last_name, email, phone)
     member_repository.save(member)
     return redirect('/members')
+
+# SHOW
+# GET '/members/<id>'
+@members_blueprint.route("/members/<id>", methods = ['GET'])
+def show_member(id):
+    member = member_repository.select(id)
+    return render_template('members/show.html', member = member)
