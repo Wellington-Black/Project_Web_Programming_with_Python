@@ -17,11 +17,13 @@
     <th>Studio</th>
     <th>|</th>
     <th>Level</th>
-  
+    <th>|</th>
+    <th>VIEW</th>
+
   </tr>
   {% for activity in activities %}
   <tr>
-    
+
     <td><a href="/activities/{{ activity.id }}"> {{activity.name}} </a></td>
     <th>|</th>
     <td><a href="/activities/{{ activity.id }}"> {{activity.instructor}} </a></td>
@@ -31,7 +33,10 @@
     <td><a href="/activities/{{ activity.id }}"> {{activity.studio}} </a></td>
     <th>|</th>
     <td><a href="/activities/{{ activity.id }}"> {{activity.level}} </a></td>
-    
+    <th>|</th>
+    <td><a href="/activities/{{ activity.id }}/members"> View members </a></td>
+
+
   </tr>
   {% endfor %}
 </table>

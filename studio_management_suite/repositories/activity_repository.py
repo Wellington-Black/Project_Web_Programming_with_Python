@@ -2,6 +2,8 @@ from db.run_sql import run_sql
 
 from models.activity import Activity
 from models.member import Member
+from models.booking import Booking
+
 
 def save(activity):
     sql = "INSERT INTO activities(name, instructor, time, studio, level) VALUES ( %s, %s, %s, %s, %s ) RETURNING id"
@@ -44,3 +46,18 @@ def select(id):
     if result is not None:
         activity = Activity(result['name'], result['instructor'], result['time'], result['studio'], result['level'], result['id'] )
     return activity
+
+
+def select_activity_id(id):
+    attendances = []
+
+    sql = '''SELECT m.id as member_id, act.id as activity_id, m.first_name, m.last_name,
+            act.name as activity_name
+            FROM attendances att 
+            JOIN activities act ON (act.id = att.activity_id) 
+            JOIN members m ON (m.id = att.member_id) where act.id = %s '''
+    results = run_sql(sql, id)
+
+    for row in results:
+        attendances.append(Booking(**row))
+    return attendances

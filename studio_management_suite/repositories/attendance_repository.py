@@ -32,3 +32,4 @@ def select_all():
     for row in results:
         attendances.append(Booking(**row))
     return attendances
+

@@ -10,6 +10,16 @@ def activities():
     activities = activity_repository.select_all()
     return render_template("activities/index.html", activities = activities)
 
+
+#GET
+#NEW
+@activities_blueprint.route("/activities/<id>/members", methods = ['GET'])
+def activities_bookings(id):
+    members = activity_repository.select_activity_id(id)
+    return render_template("activities/members.html", members = members )
+
+
+#GET
 @activities_blueprint.route("/activities/upcoming")
 def upcoming_activities():
     activities = activity_repository.upcoming()
