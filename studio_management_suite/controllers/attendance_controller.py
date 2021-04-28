@@ -30,4 +30,4 @@ def create_attendance():
     activity_id = request.form['activity_id']
     attendance = Attendance(member_id, activity_id)
     attendance_repository.save(attendance)
-    return redirect('/attendances/index.html')
+    return redirect("/attendances")

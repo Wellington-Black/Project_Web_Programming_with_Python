@@ -25,6 +25,16 @@ def select_all():
         activities.append(activity)
     return activities
 
+def upcoming():
+    activities = []
+
+    sql = "SELECT * FROM activities WHERE time > NOW()"
+    results = run_sql(sql)
+    for row in results:
+        activity = Activity(row['name'], row['instructor'], row['time'], row['studio'], row['level'], row['id'])
+        activities.append(activity)
+    return activities
+
 def select(id):
     activity = None
     sql = "SELECT * FROM activities WHERE id = %s"

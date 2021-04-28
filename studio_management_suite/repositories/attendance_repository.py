@@ -2,6 +2,7 @@ from db.run_sql import run_sql
 from models.attendance import Attendance
 from models.member import Member
 from models.activity import Activity
+from models.booking import Booking
 
 import repositories.member_repository as member_repository
 import repositories.activity_repository as activity_repository
@@ -21,12 +22,13 @@ def update(attendance):
 def select_all():
     attendances = []
 
-    sql = "SELECT * FROM attendances"
+    sql = '''SELECT m.id as member_id, act.id as activity_id, m.first_name, m.last_name,
+            act.name as activity_name
+            FROM attendances att 
+            JOIN activities act ON (act.id = att.activity_id) 
+            JOIN members m ON (m.id = att.member_id)'''
     results = run_sql(sql)
 
     for row in results:
-        member = member_repository.select(row['member_id'])
-        activity = activity_repository.select(row['activity_id'])
-        attendance = Attendance(member, activity, row['id'])
-        attendances.append(attendance)
+        attendances.append(Booking(**row))
     return attendances

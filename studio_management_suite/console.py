@@ -2,6 +2,7 @@ import pdb
 from models.activity import Activity
 from models.member import Member
 from models.attendance import Attendance
+import datetime
 
 import repositories.member_repository as member_repository
 import repositories.activity_repository as activity_repository
@@ -19,20 +20,21 @@ member_repository.save(member3)
 member_repository.save(member4)
 member_repository.save(member5)
 
-activity1 = Activity("Salsa", "Vegeta", "18:00", "Paladium", "Beginner")
-activity2 = Activity("Bachata", "Hinata", "19:00", "Island", "Intermediate")
-activity3 = Activity("Salsa", "Naruto", "20:00", "Tumbao", "Advance")
-activity4 = Activity("Bachata", "Misa", "21:00", "Paladium", "Improver")
+
+activity1 = Activity("Salsa", "Vegeta", datetime.datetime.utcnow(), "Paladium", "Beginner")
+activity2 = Activity("Bachata", "Hinata", datetime.datetime.utcnow(), "Island", "Intermediate")
+activity3 = Activity("Salsa", "Naruto", datetime.datetime.utcnow(), "Tumbao", "Advance")
+activity4 = Activity("Bachata", "Misa", datetime.datetime.utcnow(), "Paladium", "Improver")
 
 activity_repository.save(activity1)
 activity_repository.save(activity2)
 activity_repository.save(activity3)
 activity_repository.save(activity4)
 
-attendance1 = Attendance(member1, activity1)
-attendance2 = Attendance(member1, activity3)
-attendance3 = Attendance(member2, activity4)
-attendance4 = Attendance(member3, activity3)
+attendance1 = Attendance(member1.id, activity1.id)
+attendance2 = Attendance(member1.id, activity3.id)
+attendance3 = Attendance(member2.id, activity4.id)
+attendance4 = Attendance(member3.id, activity3.id)
 
 attendance_repository.save(attendance1)
 attendance_repository.save(attendance2)
