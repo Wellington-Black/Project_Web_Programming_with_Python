@@ -6,3 +6,6 @@ class Member:
         self.email = email
         self.phone = phone
         self.id = id
+
+    def __str__(self):
+        return '{} {}'.format(self.first_name,self.last_name)

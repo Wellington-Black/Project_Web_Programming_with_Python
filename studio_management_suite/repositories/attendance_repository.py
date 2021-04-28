@@ -8,14 +8,14 @@ import repositories.activity_repository as activity_repository
 
 def save(attendance):
     sql = "INSERT INTO attendances ( member_id, activity_id ) VALUES ( %s, %s ) RETURNING id"
-    values = [attendance.member.id, attendance.activity.id]
+    values = [attendance.member_id, attendance.activity_id]
     results = run_sql( sql, values )
     attendance.id = results[0]['id']
     return attendance
 
 def update(attendance):
     sql = "UPDATE attendances SET ( member_id, activity_id ) = ( %s, %s ) WHERE id = %s"
-    values = [attendance.member.id, attendance.activity.id, attendance.id]
+    values = [attendance.member_id, attendance.activity_id, attendance.id]
     run_sql(sql, values)
 
 def select_all():

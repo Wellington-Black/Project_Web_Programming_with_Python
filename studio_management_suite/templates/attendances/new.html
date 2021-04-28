@@ -1,0 +1,30 @@
+{% extends '/layout.html' %}
+
+{% block title %} New Member {% endblock %}
+
+{% block main %}
+
+<form action="/attendances" method="post">
+    <div>
+        <label for="Member">Member: </label>
+        <select name="member_id" id="member">
+            {% for member in members %}
+            <option value="{{ member.id }}">{{ member.first_name }} {{ member.last_name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div>
+        <label for="Activity">Activity: </label>
+        <select name="activity_id" id="activity">
+            {% for activity in activities %}
+            <option value="{{ activity.id }}">{{ activity.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <button type="submit">Book</button>
+
+</form>
+
+{% endblock %}

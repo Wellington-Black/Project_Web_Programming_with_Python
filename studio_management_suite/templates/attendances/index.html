@@ -1,7 +1,25 @@
-{% extends 'layout.html'%}
+{% extends '/layout.html' %}
 
-{% block content %}
+{% block title %} Members {% endblock %}
+
+{% block main %}
 <h1>Attendances</h1>
+
+<table>
+    <tr>
+      <th>Member</th>
+      <th>|</th>
+      <th>Activity</th>
+    </tr>
+    {% for attendance in attendances %}
+    <tr>
+      
+      <td><a href="/attendances/{{ attendance.id }}"> {{attendance.member_id}} </a></td>
+      <th>|</th>
+      <td><a href="/attendances/{{ attendance.id }}"> {{attendance.activity_id}} </a></td>
+    </tr>
+    {% endfor %}
+  </table>
 
 <p>Testing the home page for attendances</p>
 {% endblock %}

@@ -14,9 +14,10 @@ CREATE TABLE activities (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255),
     instructor VARCHAR(255),
-    time VARCHAR(255),
+    time timestamp(0) without time zone,
     studio VARCHAR(255),
-    level VARCHAR(255)
+    level VARCHAR(255),
+    capacity INT
 );
 
 CREATE TABLE attendances (
