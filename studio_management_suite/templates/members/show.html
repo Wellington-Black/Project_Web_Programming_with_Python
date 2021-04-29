@@ -4,13 +4,13 @@
 
 {% block main %}
 
-<div>
+<div class="edit" >
     <p>{{ member.first_name }}</p>
     <hr>
     <p>{{ member.last_name }}</p>
     <p>{{ member.email }}</p>
     <p>{{ member.phone }}</p>
-    <p><a href="/members/{{member.id }}/edit">Edit</a></p>
+    <p><a href="/members/{{member.id }}/edit" class="button2">Edit</a></p>
 </div>
 
 {% endblock %}

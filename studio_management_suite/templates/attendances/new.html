@@ -3,7 +3,7 @@
 {% block title %} New Member {% endblock %}
 
 {% block main %}
-
+<div class="form">
 <form action="/attendances" method="post">
     <div>
         <label for="Member">Member: </label>
@@ -23,8 +23,9 @@
         </select>
     </div>
 
-    <button type="submit">Book</button>
+    <center><button type="submit" class="button2">Book</button></center>
 
 </form>
+</div>
 
 {% endblock %}

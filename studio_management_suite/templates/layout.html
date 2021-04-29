@@ -1,20 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="preconnect" href="https://fonts.gstatic.com"> -->
     <link href="https://fonts.googleapis.com/css2?family=Hanalei+Fill&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Duru+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Duru+Sans&display=swap" rel="stylesheet">
     <title>{% block title %} Studio Suite {% endblock%}</title>
-    <link rel="stylesheet" href="static/style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="/static/style.css">
 
-    {% block main %}{% endblock %}
-    <h1></h1>
-    
+</head>
+
+<body>
+    <header>
+        <h1>Studio Management Suite</h1>
+        <nav>
+            <ul class="nav-bar">
+                <li><a href="/activities">Activities</a></li>
+                <li><a href="/members">Members</a></li>
+                <li><a href="/activities/upcoming">Upcoming</a></li>
+                <li><a href="/attendances/new">Book</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="box-title">
+                {% block main %}{% endblock %}
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+    </footer>
 </body>
-</html> 
+
+
+</html>

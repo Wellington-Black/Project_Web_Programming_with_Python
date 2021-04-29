@@ -4,14 +4,14 @@
 
 {% block main %}
 
-<div>
+<div class="edit">
     <p>{{ activity.name }}</p>
     <hr>
     <p>{{ activity.instructor }}</p>
     <p>{{ activity.time }}</p>
     <p>{{ activity.studio }}</p>
     <p>{{ activity.level }}</p>
-    <p><a href="/activities/{{activity.id }}/edit">Edit</a></p>
+    <p><a href="/activities/{{activity.id }}/edit" class="button2">Edit</a></p>
 </div>
 
 {% endblock %}

@@ -4,40 +4,41 @@
 
 {% block main %}
 
-<h1>Activities</h1>
+<div class="wrapper">
+  <!-- <h1 class="Headings">{{ title }}</h1> -->
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>|</th>
-    <th>Instructor</th>
-    <th>|</th>
-    <th>Time</th>
-    <th>|</th>
-    <th>Studio</th>
-    <th>|</th>
-    <th>Level</th>
-    <th>|</th>
-    <th>VIEW</th>
+  <div class='bcb'>
+    <ul class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/activities">Home</a></li>
+      <li class="breadcrumb-item">Activities</li>
+    </ul>
+    <a href="/activities/new" class="new_class_button">New Class</a>
+    <!-- <button class="new_class_button"> New Class</button> -->
+  </div>
+  <div class="clear"></div>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Instructor</th>
+      <th>Time</th>
+      <th>Studio</th>
+      <th>Level</th>
+      <th>VIEW</th>
 
-  </tr>
-  {% for activity in activities %}
-  <tr>
+    </tr>
+    {% for activity in activities %}
+    <tr>
 
-    <td><a href="/activities/{{ activity.id }}"> {{activity.name}} </a></td>
-    <th>|</th>
-    <td><a href="/activities/{{ activity.id }}"> {{activity.instructor}} </a></td>
-    <th>|</th>
-    <td><a href="/activities/{{ activity.id }}"> {{activity.time}} </a></td>
-    <th>|</th>
-    <td><a href="/activities/{{ activity.id }}"> {{activity.studio}} </a></td>
-    <th>|</th>
-    <td><a href="/activities/{{ activity.id }}"> {{activity.level}} </a></td>
-    <th>|</th>
-    <td><a href="/activities/{{ activity.id }}/members"> View members </a></td>
+      <td><a href="/activities/{{ activity.id }}"> {{activity.name}} </a></td>
+      <td><a href="/activities/{{ activity.id }}"> {{activity.instructor}} </a></td>
+      <td><a href="/activities/{{ activity.id }}"> {{activity.time}} </a></td>
+      <td><a href="/activities/{{ activity.id }}"> {{activity.studio}} </a></td>
+      <td><a href="/activities/{{ activity.id }}"> {{activity.level}} </a></td>
+      <td><a href="/activities/{{ activity.id }}/members"> View members </a></td>
 
 
-  </tr>
-  {% endfor %}
-</table>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
 {% endblock %}

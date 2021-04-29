@@ -8,18 +8,14 @@
 <table>
     <tr>
       <th>Member</th>
-      <th>|</th>
       <th>Activity</th>
     </tr>
     {% for attendance in attendances %}
     <tr>
       
       <td><a href="/attendances/{{ attendance.activity_id}}"> {{attendance.first_name}} {{attendance.last_name}} </a></td>
-      <th>|</th>
       <td><a href="/attendances/{{ attendance.member_id }}"> {{attendance.activity_name}} </a></td>
     </tr>
     {% endfor %}
   </table>
-
-<p>Testing the home page for attendances</p>
 {% endblock %}

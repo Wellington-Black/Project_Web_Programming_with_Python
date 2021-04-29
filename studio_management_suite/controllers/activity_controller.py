@@ -5,10 +5,14 @@ import repositories.activity_repository as activity_repository
 
 activities_blueprint = Blueprint("activities", __name__)
 
+@activities_blueprint.route("/")
+def index():
+    return render_template("layout.html", activities = activities)
+
 @activities_blueprint.route("/activities")
 def activities():
     activities = activity_repository.select_all()
-    return render_template("activities/index.html", activities = activities)
+    return render_template("activities/index.html", activities = activities, title = "Activities")
 
 
 #GET
@@ -16,14 +20,15 @@ def activities():
 @activities_blueprint.route("/activities/<id>/members", methods = ['GET'])
 def activities_bookings(id):
     members = activity_repository.select_activity_id(id)
-    return render_template("activities/members.html", members = members )
+    activity = activity_repository.select(id)
+    return render_template("activities/members.html", members = members, activity = activity)
 
 
 #GET
 @activities_blueprint.route("/activities/upcoming")
 def upcoming_activities():
     activities = activity_repository.upcoming()
-    return render_template("activities/index.html", activities = activities)
+    return render_template("activities/index.html", activities = activities, title = "Upcoming")
 
 #GET
 #NEW

@@ -1,9 +1,9 @@
-{% extends '/layout.html' %}
+{% extends 'layout.html' %}
 
 {% block title %} New Activity {% endblock %}
 
 {% block main %}
-
+<div class="form">
 <form action="/activities" method="post">
     <div>
         <label for="name">Name: </label>
@@ -29,8 +29,8 @@
         <input type="text" id="level" name="level" placeholder="Level" required>
     </div>
     
-    <button type="submit">Add Activity</button>
+    <center><button type="submit" class="button2">Add Activity</button></center>
 
 </form>
-
+</div>
 {% endblock %}

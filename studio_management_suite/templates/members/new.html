@@ -3,7 +3,7 @@
 {% block title %} New Member {% endblock %}
 
 {% block main %}
-
+<div class="form">
 <form action="/members" method="post">
     <div>
         <label for="First name">First name: </label>
@@ -24,8 +24,9 @@
         <label for="phone">Phone</label>
         <input type="tel" id="phone" name="phone" placeholder="Phone" required>
     </div>
-    <button type="submit">Add Member</button>
-
+    <center><button type="submit" class="button2" >Add Member</button></center>
+    <!-- <center><a href="/members" class="button2" type="submit">Add Member</a></center> -->
 </form>
+</div>
 
 {% endblock %}
