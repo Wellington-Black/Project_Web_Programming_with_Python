@@ -11,7 +11,7 @@ CREATE TABLE members (
 );
 
 CREATE TABLE activities (
-    id SERIAL PRIMARY KEY,
+    id SERIAL PRIMARY KEY, 
     name VARCHAR(255),
     instructor VARCHAR(255),
     time timestamp(0) without time zone,

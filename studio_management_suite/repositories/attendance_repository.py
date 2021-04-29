@@ -22,8 +22,12 @@ def update(attendance):
 def select_all():
     attendances = []
 
-    sql = '''SELECT m.id as member_id, act.id as activity_id, m.first_name, m.last_name,
-            act.name as activity_name
+    sql = '''SELECT 
+                m.id as member_id, 
+                act.id as activity_id, 
+                m.first_name, 
+                m.last_name,
+                act.name as activity_name
             FROM attendances att 
             JOIN activities act ON (act.id = att.activity_id) 
             JOIN members m ON (m.id = att.member_id)'''

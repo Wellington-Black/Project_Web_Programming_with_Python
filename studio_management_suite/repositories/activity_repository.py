@@ -51,13 +51,28 @@ def select(id):
 def select_activity_id(id):
     attendances = []
 
-    sql = '''SELECT m.id as member_id, act.id as activity_id, m.first_name, m.last_name,
-            act.name as activity_name
+    sql = '''SELECT 
+                m.id as member_id, 
+                act.id as activity_id, 
+                m.first_name, 
+                m.last_name,
+                act.name as activity_name
             FROM attendances att 
             JOIN activities act ON (act.id = att.activity_id) 
-            JOIN members m ON (m.id = att.member_id) where act.id = %s '''
+            JOIN members m ON (m.id = att.member_id) 
+            WHERE act.id = %s '''
     results = run_sql(sql, id)
 
+    # results = [{"member_id":3, "activity_id":4, "firs..."},
+    #            {"member_id":3, "activity_id":4, "firs..."} ]
+
     for row in results:
+        # row = {"member_id":3, "activity_id":4, "firs..."} 
+
+        # A: Booking( {"member_id":3, "activity_id":4, "firs..."} ) == Booking(row)
+
+        # B: Booking(member_id =3, activity_id=4, first_name=... ) == Booking(**row)
+
+
         attendances.append(Booking(**row))
     return attendances
